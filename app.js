@@ -16,6 +16,7 @@ const viewRouter = require('./routes/viewRoutes')
 const cookieParser = require('cookie-parser')
 const csp = require('express-csp')
 const compression = require('compression')
+const cors = require('cors')
 
 // Start express app
 const app = express()
@@ -26,6 +27,11 @@ app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
 
 // GLOBAL MIDDLEWARES
+// implement CORS
+app.use(cors())
+
+app.options('*'. cors())
+
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')))
 
