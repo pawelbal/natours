@@ -15,6 +15,7 @@ const hpp = require('hpp')
 const viewRouter = require('./routes/viewRoutes')
 const cookieParser = require('cookie-parser')
 const csp = require('express-csp')
+const compression = require('compression')
 
 // Start express app
 const app = express()
@@ -158,6 +159,8 @@ app.use(hpp({
         'duration', 'ratingsQuantity', 'ratingsAverage', 'maxGroupSize', 'difficulty', 'price'
     ]
 }))
+
+app.use(compression())
 
 // Test middleware
 // app.use((req, res, next) => {
